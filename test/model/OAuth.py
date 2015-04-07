@@ -39,8 +39,8 @@ def authorized(oauth_token):
 	userID = verifySessionID()
 	print("userID[" + str(userID) + "]")
 	
-	#next_url = request.args.get('next')
-	#url_for('index')
+	next_url = request.args.get('next')
+	url_for('index')
 	print(oauth_token)
 	if oauth_token is None:
 		print('Nothing here.')
