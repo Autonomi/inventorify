@@ -5,8 +5,6 @@ from flask.ext.session import Session
 app = Flask(__name__)
 app.config['GITHUB_CLIENT_ID'] = '8ee9ec236dfaec1256a2'
 app.config['GITHUB_CLIENT_SECRET'] = '3154c945b7263b3b36377c1b77dcd9c72eeefe4a'
-#app.config['GITHUB_BASE_URL'] = 'https://github.com/login/oauth/authorize'
-#app.config['GITHUB_AUTH_URL'] = 'https://github.com/login/oauth/access_token'
 
 github = GitHub(app)
 
@@ -43,7 +41,6 @@ def authorized(oauth_token):
 	url_for('index')
 	print(oauth_token)
 	if oauth_token is None:
-		print('Nothing here.')
 		flash("Authorization failed.")
 		return redirect('error.html')
 	else:
