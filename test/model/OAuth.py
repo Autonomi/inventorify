@@ -9,6 +9,8 @@ app.config['GITHUB_CLIENT_SECRET'] = '3154c945b7263b3b36377c1b77dcd9c72eeefe4a'
 github = GitHub(app)
 
 sess = Session()
+
+#nextID is a UID. Would be generated using hash functions.
 nextID = 0
 
 def verifySessionID():
@@ -25,7 +27,7 @@ def verifySessionID():
 	sessionID = session.get('userID', None)
 	return sessionID
 
-
+#return access token as part of URL when redirected to the callback URL mentioned.
 @app.route('/login')
 def login():
 	return github.authorize()
