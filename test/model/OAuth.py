@@ -1,10 +1,11 @@
 from flask import Flask, render_template, flash, session, redirect
 from flask.ext.github import GitHub
 from flask.ext.session import Session
+from config import github_client_id, github_client_secret
 
 app = Flask(__name__)
-app.config['GITHUB_CLIENT_ID'] = '8ee9ec236dfaec1256a2'
-app.config['GITHUB_CLIENT_SECRET'] = '3154c945b7263b3b36377c1b77dcd9c72eeefe4a'
+app.config['GITHUB_CLIENT_ID'] = github_client_id
+app.config['GITHUB_CLIENT_SECRET'] = github_client_secret
 
 github = GitHub(app)
 
@@ -39,9 +40,9 @@ def authorized(oauth_token):
 	userID = verifySessionID()
 	print("userID[" + str(userID) + "]")
 	
-	next_url = request.args.get('next')
-	url_for('index')
-	print(oauth_token)
+	#next_url = request.args.get('next')
+	next_url = url_for('index')
+	#print(oauth_token)
 	if oauth_token is None:
 		flash("Authorization failed.")
 		return redirect('error.html')
